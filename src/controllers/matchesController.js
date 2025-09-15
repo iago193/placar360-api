@@ -1,27 +1,27 @@
 class MatchesController {
   // Jogos ao vivo
-  async live(req, res) {
+  live = async (req, res) => {
     await this.fetchMatches(`${process.env.BASE_URL}/fixtures?live=all`, res);
   }
 
   // Próximos jogos
-  async upcoming(req, res) {
+  upcoming = async (req, res) => {
     await this.fetchMatches(`${process.env.BASE_URL}/fixtures?next=10`, res);
   }
 
   // Últimos resultados
-  async results(req, res) {
+  results = async (req, res) => {
     await this.fetchMatches(`${process.env.BASE_URL}/fixtures?last=10`, res);
   }
 
   // Detalhes de um jogo
-  async details(req, res) {
+  details = async (req, res) => {
     const { id } = req.params;
     await this.fetchMatches(`${process.env.BASE_URL}/fixtures?id=${id}`, res);
   }
 
   // Função auxiliar para não repetir código
-  async fetchMatches(url, res) {
+  fetchMatches = async (url, res) => {
     try {
       const response = await fetch(url, {
         method: "GET",

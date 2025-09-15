@@ -1,6 +1,6 @@
 class PlayersController {
   // Top artilheiros de uma liga
-  async topScorers(req, res) {
+  topScorers = async (req, res) => {
     const { league, season } = req.query; // exemplo: ?league=71&season=2025
     await this.fetchData(
       `${process.env.BASE_URL}/players/topscorers?league=${league}&season=${season}`,
@@ -9,7 +9,7 @@ class PlayersController {
   }
 
   // Top assistências
-  async topAssists(req, res) {
+  topAssists = async (req, res) => {
     const { league, season } = req.query;
     await this.fetchData(
       `${process.env.BASE_URL}/players/topassists?league=${league}&season=${season}`,
@@ -18,7 +18,7 @@ class PlayersController {
   }
 
   // Informações de um jogador específico
-  async details(req, res) {
+  details = async (req, res) => {
     const { id } = req.params; // /players/276
     await this.fetchData(
       `${process.env.BASE_URL}/players?id=${id}`,
@@ -27,7 +27,7 @@ class PlayersController {
   }
 
   // Plantel de um time
-  async squad(req, res) {
+  squad = async (req, res) => {
     const { team, season } = req.query; // ?team=33&season=2025
     await this.fetchData(
       `${process.env.BASE_URL}/players/squads?team=${team}&season=${season}`,
@@ -36,7 +36,7 @@ class PlayersController {
   }
 
   // Método auxiliar para não duplicar código
-  async fetchData(url, res) {
+  fetchData = async (url, res) => {
     try {
       const response = await fetch(url, {
         method: "GET",
